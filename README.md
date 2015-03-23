@@ -27,7 +27,7 @@ class DirSystem(dict):
          'repeat_mrg_dir'        : "%s/07.merge_repFPKM"    % (home_dir),   \
 			
 ```
-to put the results.
+to put the results. Raw fq data should be put into 00.0.raw_data at the very beginning.
 
 Then , build-up a software system class:
 
