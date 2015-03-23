@@ -26,7 +26,8 @@ class DirSystem(dict):
          'repeat_counts_dir'     : "%s/06.repeat_counts"    % (home_dir),   \
          'repeat_mrg_dir'        : "%s/07.merge_repFPKM"    % (home_dir),   \
 			
-``` to put the results.
+```
+to put the results.
 
 Then , build-up a software system class:
 
