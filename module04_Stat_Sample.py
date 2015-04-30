@@ -42,10 +42,11 @@ class SampStat(dict):
       self.cufflink_u   = self['dir_name']['cufflinks_unknown_dir']
       self.cuffquant    = self['dir_name']['cuffquant_dir']
       self.cuffnorm     = self['dir_name']['cuffnorm_dir']
-      self.cuffquant_ercc=self['dir_name']['cuffquant_ERCC_dir']
-      self.cuffnorm_ercc =self['dir_name']['cuffnorm_ERCC_dir']
-      self.repeatCount  = self['dir_name']['repeat_counts_dir']
-      self.repeat_mrg   = self['dir_name']['repeat_mrg_dir']
+      self.cuffquant_ercc =self['dir_name']['cuffquant_ERCC_dir']
+      self.cuffnorm_ercc  =self['dir_name']['cuffnorm_ERCC_dir']
+      self.cuffnorm_ercc_k=self['dir_name']['cuffnorm_ERCC_k_dir']
+      self.repeatCount    = self['dir_name']['repeat_counts_dir']
+      self.repeat_mrg     = self['dir_name']['repeat_mrg_dir']
       
       home_dir          = os.path.abspath('./')
       self.script_dir   = "%s/scripts" % (home_dir)
@@ -104,6 +105,7 @@ class SampStat(dict):
       file.close()
    
    def __get_HTS_reads(self, HTS_info, samp):
+      print samp
       idx = self['sample'].index( samp )
       return HTS_info.sam_tot_reads[idx]
       
@@ -189,7 +191,6 @@ for i in `cut -f 1 %s/novo_lnc_raw.combined.FPKM0.5_rep0.25.multiExon.genlen | u
          Tophat_log  =  "%s/%s/align_summary.txt"           % ( self.tophat,brief_name )
          HTSeq_SpikeIn= "%s/%s/%s.dexseq_ERCC_RGCPloyA.txt" % ( self.HTS_k ,brief_name, brief_name )
          
-         print brief_name
          QcStat_info = Stat.QcStat( QC_log )
          MapStat_info= Stat.TophatStat( Tophat_log )
          SpikeIn_info= Stat.SpikeIn( HTSeq_SpikeIn, self['infile']['ercc_info'] )
@@ -310,7 +311,7 @@ for i in `cut -f 1 %s/novo_lnc_raw.combined.FPKM0.5_rep0.25.multiExon.genlen | u
       np_align_reads = np.array( l_align_reads )
      
       RepCnt = m_repcnt.RepeatCount( self.repeatCount,l_brief_samp, self.repeat_mrg )
-      RepCnt.generate_mat()
+#      RepCnt.generate_mat()
       RepCnt.element_group_subgroup_FPKM_sum(np_align_reads)
 
    
@@ -429,7 +430,7 @@ for i in `cut -f 1 %s/novo_lnc_raw.combined.FPKM0.5_rep0.25.multiExon.genlen | u
    
    def plot_regression(self):
       pdfname = "All_samples.rpkm_cnt.pdf" 
-      fig = plt.figure(figsize=(120,120))
+      fig = plt.figure(figsize=(150,150))
       cnt = 0
       for samp in self['sample']:
          brief_name = self['sam_info']['samp_brief'][samp]
@@ -455,7 +456,7 @@ for i in `cut -f 1 %s/novo_lnc_raw.combined.FPKM0.5_rep0.25.multiExon.genlen | u
          FPKM_predict = intercept + slope * (MOLs_predict + np.log2(6.02*10**23/10**18) )
       
          cnt += 1
-         ax = plt.subplot( 16,16,cnt)
+         ax = plt.subplot( 20,20,cnt)
          ax.plot( np_ERCC_MOLs,     np_ERCC_FPKM      ,".r")
          ax.plot( np_ERCC_MOLs_use, np_ERCC_FPKM_use  ,"ro")
          ax.plot( MOLs_predict,     FPKM_predict           )
