@@ -73,6 +73,7 @@ class RnaQuantification(dict):
    def RNA_QuantPipe(self):
       new_trans = m_cuff.QuantPipe( self['sam_info'], self['sample'], self['infile']['genome_file'], self['infile']['anno_file_refERCC'], self['infile']['anno_file'], self['infile']['intragenic_bed'], self['infile']['rmsk_gtf'],self['infile']['rmsk_bed'], self['dir_name'],self['sftw_name'] )
       new_trans.run_HTSeq_known()
+
 ##      new_trans.run_cufflinks_u()
 ##      new_trans.run_cuffcomp_novo_trans()
 ##      new_trans.run_HTSeq_unknown()
@@ -85,8 +86,8 @@ class RnaQuantification(dict):
 
       new_trans.makeGTF_withoutERCC()
       new_trans.run_cuffquant_k()
-      new_trans.run_cuffnorm_k()
+#      new_trans.run_cuffnorm_k()
       new_trans.run_cuffquant_ERCC_k()
-      new_trans.run_cuffnorm_ERCC_k()
+#      new_trans.run_cuffnorm_ERCC_k()
 
-      new_trans.run_repeat_count()
+#      new_trans.run_repeat_count()
