@@ -131,17 +131,17 @@ chr1	15039	15795	Intragenic
 chr1	15796	15947	Intragenic
 chr1	15948	16606	Intragenic
 
-==> rmsk_gtf <==
-chr1	hg19_rmsk	exon	10000	10468	1504	+	.	gene_id "Simple_repeat_1:10000-10468"; transcript_id "Simple_repeat__(CCCTAA)n__1:10000-10468";
-chr1	hg19_rmsk	exon	10468	11447	3612	-	.	gene_id "Satellite_1:10468-11447"; transcript_id "telo__TAR1__1:10468-11447";
-chr1	hg19_rmsk	exon	33047	33456	2058	+	.	gene_id "LINE_1:33047-33456"; transcript_id "L1__L1MB5__1:33047-33456";
-chr1	hg19_rmsk	exon	33528	34041	4051	-	.	gene_id "LINE_1:33528-34041"; transcript_id "L1__L1PA6__1:33528-34041";
-chr1	hg19_rmsk	exon	37044	37431	1566	+	.	gene_id "DNA_1:37044-37431"; transcript_id "hAT-Charlie__Charlie5__1:37044-37431";
-chr1	hg19_rmsk	exon	38255	39464	3877	+	.	gene_id "LTR_1:38255-39464"; transcript_id "ERVL-MaLR__MLT1E1A-int__1:38255-39464";
-chr1	hg19_rmsk	exon	39623	39924	2292	+	.	gene_id "SINE_1:39623-39924"; transcript_id "Alu__AluSx__1:39623-39924";
-chr1	hg19_rmsk	exon	39924	40294	783	+	.	gene_id "LTR_1:39924-40294"; transcript_id "ERVL-MaLR__MLT1E1A__1:39924-40294";
-chr1	hg19_rmsk	exon	41379	42285	1118	-	.	gene_id "LTR_1:41379-42285"; transcript_id "ERVL__ERVL-E-int__1:41379-42285";
-chr1	hg19_rmsk	exon	43242	44835	7010	+	.	gene_id "LINE_1:43242-44835"; transcript_id "L1__L1MA8__1:43242-44835";
+==> rmsk_bed <==
+chr1	10001	10468	1504	1.3	0.4	1.3	(249240153)	+	(CCCTAA)n	Simple_repeat	1	463	(0)	1
+chr1	10469	11447	3612	11.4	27.0	1.3	(249239174)	C	TAR1	Satellite/telo	(399)	1712	483	2
+chr1	11504	11675	437	23.5	18.6	3.5	(249238946)	C	L1MC	LINE/L1	(2236)	5646	5449	3
+chr1	11678	11780	239	29.4	1.9	1.0	(249238841)	C	MER5B	DNA/hAT-Charlie	(74)	104	1	4
+chr1	15265	15355	318	23.0	3.8	0.0	(249235266)	C	MIR3	SINE/MIR	(119)	143	49	5
+chr1	16713	16749	203	16.2	0.0	0.0	(249233872)	+	(TGG)n	Simple_repeat	1	37	(0)	6
+chr1	18907	19048	239	33.8	14.8	0.0	(249231573)	+	L2a	LINE/L2	2942	3104	(322)	7
+chr1	19948	20405	652	34.6	8.5	4.2	(249230216)	+	L3	LINE/CR1	3042	3519	(970)	8
+chr1	20531	20679	270	33.1	0.7	2.7	(249229942)	+	Plat_L3	LINE/CR1	2802	2947	(639)	9
+chr1	21949	22075	254	27.9	4.7	3.9	(249228546)	+	MLT1K	LTR/ERVL-MaLR	15	142	(453)	10
 
 ```
 
@@ -162,7 +162,7 @@ samp_process.load_samp()
 samp_process.run_QC()
 samp_process.run_tophat()
 
-samp_mRNAQ = m02.RnaQuantification( samp_info,bt_index_base,genome_gtf,genome_gtf_wl,intragenic_bed, rmsk_gtf, rmsk_bed,  dir_name['dir'],sftw_name )
+samp_mRNAQ = m02.RnaQuantification( samp_info,bt_index_base,genome_gtf,genome_gtf_wl,intragenic_bed, rmsk_bed,  dir_name['dir'],sftw_name )
 samp_mRNAQ.load_samp()
 samp_mRNAQ.RNA_QuantPipe()
 
