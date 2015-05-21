@@ -15,10 +15,10 @@ import module_GTFFeature   as m_gtf
 import module_CountInfo    as m_cnt
 
 class QuantPipe(dict):
-   def __init__( self,M_samp_info,l_samp,genome_file,anno_file_refERCC,anno_file,intragenic_bed,rmsk_gtf,rmsk_bed,  dir_name,sftw_name ):
+   def __init__( self,M_samp_info,l_samp,genome_file,anno_file_refERCC,anno_file,intragenic_bed,rmsk_bed,  dir_name,sftw_name ):
       self['samp_info'] = M_samp_info
       self['samp']      = l_samp
-      self['infile'] = { 'genome_file':genome_file,'anno_file_refERCC':anno_file_refERCC,'anno_file':anno_file,'intragenic_bed':intragenic_bed,'rmsk_gtf':rmsk_gtf,'rmsk_bed':rmsk_bed }
+      self['infile'] = { 'genome_file':genome_file,'anno_file_refERCC':anno_file_refERCC,'anno_file':anno_file,'intragenic_bed':intragenic_bed,'rmsk_bed':rmsk_bed }
       self['dir_name']  = dir_name
       self['sftw_name'] = sftw_name
       self.__load_name()
