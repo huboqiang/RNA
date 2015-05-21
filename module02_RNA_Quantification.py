@@ -16,10 +16,10 @@ import module_GTFFeature   as m_gtfF
 
 
 class RnaQuantification(dict):
-   def __init__(self,samp_info,genome_file,anno_file_refERCC,anno_file,intragenic_bed,rmsk_gtf,rmsk_bed,dir_name,sftw_name ):
+   def __init__(self,samp_info,genome_file,anno_file_refERCC,anno_file,intragenic_bed,rmsk_bed,dir_name,sftw_name ):
       self['sam_info'] = {}
       self['sample'] = []
-      self['infile'] = {'info_file':samp_info, 'genome_file':genome_file,'anno_file_refERCC':anno_file_refERCC,'anno_file':anno_file,'intragenic_bed':intragenic_bed,'rmsk_gtf':rmsk_gtf,"rmsk_bed":rmsk_bed  }
+      self['infile'] = {'info_file':samp_info, 'genome_file':genome_file,'anno_file_refERCC':anno_file_refERCC,'anno_file':anno_file,'intragenic_bed':intragenic_bed,"rmsk_bed":rmsk_bed  }
       self['stage'] = { 'name':[] }
       self['dir_name'] = dir_name
       self['sftw_name']= sftw_name
@@ -71,7 +71,7 @@ class RnaQuantification(dict):
       file.close()
    
    def RNA_QuantPipe(self):
-      new_trans = m_cuff.QuantPipe( self['sam_info'], self['sample'], self['infile']['genome_file'], self['infile']['anno_file_refERCC'], self['infile']['anno_file'], self['infile']['intragenic_bed'], self['infile']['rmsk_gtf'],self['infile']['rmsk_bed'], self['dir_name'],self['sftw_name'] )
+      new_trans = m_cuff.QuantPipe( self['sam_info'], self['sample'], self['infile']['genome_file'], self['infile']['anno_file_refERCC'], self['infile']['anno_file'], self['infile']['intragenic_bed'], self['infile']['rmsk_bed'], self['dir_name'],self['sftw_name'] )
       new_trans.run_HTSeq_known()
 
 ##      new_trans.run_cufflinks_u()
