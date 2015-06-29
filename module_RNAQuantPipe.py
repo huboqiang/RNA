@@ -604,8 +604,8 @@ py_Repeat_Intersect2Count=$6
 out_dir=$7
 
 $samtools_exe view -F 0x0004 $in_bam |                     \\
-   grep -v ERCC-00* | grep -v RGC-CRE|                \\
-   grep -v RGC-GFP  | grep -v RGC-mRFP |grep NH:i:1 | \\
+   grep -v ERCC-00* | grep -v RGC-CRE|                      \\
+   grep -v RGC-GFP  | grep -v RGC-mRFP |grep "\bNH:i:1\b" | \\
    awk '{OFS="\\t"; print $3,$4,$4+length($10),$1 }' >${out_dir}/repeat_result.bed
 
 $bedtools_exe intersect -sorted -loj -a $gtf_bed -b ${out_dir}/repeat_result.bed | \\
